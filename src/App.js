@@ -59,7 +59,7 @@ function App() {
 
       {/* Define Routes */}
       <Routes>
-        <Route path="/" element={<Dictaphone />} />
+        <Route path="/speech-to-text" element={<Dictaphone />} />
         <Route path="/dictaphone" element={<Dictaphone />} />
         <Route path="/readonly" element={<Readonly />} />
       </Routes>
