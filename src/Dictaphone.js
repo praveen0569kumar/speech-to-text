@@ -71,7 +71,7 @@ const resetData= ()=>{
       }}
     >
       {data && (
-  <div style={{ width: "30%" }}>
+  <div style={{ width: "40%" ,}}>
     <h1>React Questions and Answers</h1>
     <input
       type="text"
@@ -87,14 +87,14 @@ const resetData= ()=>{
           listStyle: "none",
           padding: "0",
           margin: "0",
-          maxHeight: "150px",
+          maxHeight: "500px",
           overflowY: "auto",
           border: "1px solid #ccc",
           borderRadius: "5px",
           backgroundColor: "#fff",
           zIndex: "1000",
           position: "absolute",
-          width: "30%"
+          width: "40%",
         }}
       >
         {Object.keys(data1)
@@ -162,7 +162,7 @@ const resetData= ()=>{
   </div>
 )}
 
-      <div style={{ width: "70%" }}>
+      <div style={{ width: "60%" }}>
         <div style={{ marginBottom: "20px", width: "80%",marginTop: '10px',marginLeft:'90px' }}>
           <input
             type="password"
