@@ -24,13 +24,97 @@ const Readonly = () => {
 
   return (
     <div style={{ display: 'flex' }}>
-      <div style={{ padding: "20px", width: '30%', textAlign: "center", display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-        <b>Name of company:<input type="text" style={{padding:'10px'}}/></b>
-        <b>Name of payrollcompany:<input type="text" style={{padding:'10px'}}/></b>
-        <b>Current CTC:<input type="text" style={{padding:'10px'}}/></b>
-        <b>expected CTC:<input type="text" style={{padding:'10px'}}/></b>
-        <b>Years of  experience:<input type="text" style={{padding:'10px'}}/></b>
-      </div>
+      <div
+  style={{
+    padding: "20px",
+    width: "40%",
+    margin: "0 auto",
+    border: "1px solid #ddd",
+    borderRadius: "10px",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "#f9f9f9",
+    fontFamily: "Arial, sans-serif",
+  }}
+>
+  <h2 style={{ textAlign: "center", color: "#333", marginBottom: "20px" }}>
+    Candidate Details
+  </h2>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "15px",
+    }}
+  >
+    <label style={{ display: "flex", flexDirection: "column", fontSize: "16px", fontWeight: "bold", color: "#555" }}>
+      Name of Company:
+      <input
+        type="text"
+        style={{
+          textAlign:'center',
+          padding: "10px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+          fontSize: "24px",
+        }}
+      />
+    </label>
+    <label style={{ display: "flex", flexDirection: "column", fontSize: "16px", fontWeight: "bold", color: "#555" }}>
+      Name of Payroll Company:
+      <input
+        type="text"
+        style={{
+          padding: "10px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+          fontSize: "24px",
+          textAlign:'center',
+        }}
+      />
+    </label>
+    <label style={{ display: "flex", flexDirection: "column", fontSize: "16px", fontWeight: "bold", color: "#555" }}>
+      Current CTC:
+      <input
+        type="text"
+        style={{
+          padding: "10px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+          fontSize: "24px",
+          textAlign:'center',
+        }}
+      />
+    </label>
+    <label style={{ display: "flex", flexDirection: "column", fontSize: "16px", fontWeight: "bold", color: "#555" }}>
+      Expected CTC:
+      <input
+        type="text"
+        style={{
+          padding: "10px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+          fontSize: "24px",
+          textAlign:'center',
+        }}
+      />
+    </label>
+    <label style={{ display: "flex", flexDirection: "column", fontSize: "16px", fontWeight: "bold", color: "#555" }}>
+      Years of Experience:
+      <input
+        type="text"
+        style={{
+          padding: "10px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+          fontSize: "24px",
+          textAlign:'center',
+        }}
+      />
+    </label>
+  </div>
+  
+</div>
+
       <div style={{ padding: "20px", width: '70%', textAlign: "center" }}>
 
         <textarea
