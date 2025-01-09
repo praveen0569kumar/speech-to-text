@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import { db, ref, set } from "./firebase"; 
-import {data1} from './data'
+import {data1} from './data';
+import axios from "axios";
+
 
 const Dictaphone = () => {
   const { transcript, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
@@ -11,18 +13,31 @@ const Dictaphone = () => {
   const [data, setData] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [result, setResult] = useState(null);
-
-  
+  const [question,setquestion]=useState('')
+  const [answer,setAnswer]=useState('')
+  const gemini=async()=>{
+    const response=await axios({
+        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAicG3US3okF_VpzKlpm2MiLVhyXHjplNM",
+        method:"post",
+        data:{
+          contents: [{
+            parts:[{text: question}]
+            }]
+           }
+    })
+    setContent('')
+    setAnswer(response.data.candidates[0].content.parts[0].text)
+  }
 
   useEffect(() => {
-    if (transcript || content) {
+    if (transcript || content || answer) {
       try {
-        set(ref(db, "transcript"), { transcript, content }); // Save transcript and content to Firebase
+        set(ref(db, "transcript"), { transcript, content,answer }); // Save transcript and content to Firebase
       } catch (error) {
         console.error("Error updating transcript:", error);
       }
     }
-  }, [transcript, content]);
+  }, [transcript, content ,answer]);
 
   const handleRecord = () => {
     setData(recorddata);
@@ -54,6 +69,7 @@ const Dictaphone = () => {
     }
   };
 const senddata=()=>{
+  setAnswer('')
   setContent(result.answer);
 }
 const resetData= ()=>{
@@ -71,7 +87,7 @@ const resetData= ()=>{
       }}
     >
       {data && (
-  <div style={{ width: "40%" ,}}>
+  <div style={{ width: "40%",marginTop:'-50px'}}>
     <h1>React Questions and Answers</h1>
     <input
       type="text"
@@ -80,7 +96,7 @@ const resetData= ()=>{
       onChange={handleSearch}
       style={{ padding: "10px", width: "100%", marginBottom: "20px" }}
     />
-    {/* Auto-dropdown for suggestions */}
+    
     {searchTerm && (
       <ul
         style={{
@@ -159,6 +175,29 @@ const resetData= ()=>{
           >
             Reset
           </button>
+          <div style={{marginTop:'20px'}}>
+            <input
+              type="text"
+              placeholder="Search for a question..."
+              value={question} onChange={(e) => setquestion(e.target.value)}
+              style={{ padding: "10px", width: "100%", marginBottom: "20px" }}
+            />
+            <button
+              onClick={gemini}
+              style={{
+                padding: "10px 20px",
+                fontSize: "16px",
+                color: "#fff",
+                backgroundColor: "#007bff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                marginRight: "10px",
+              }}
+            >
+              Gemini
+            </button>
+          </div>
   </div>
 )}
 
@@ -264,7 +303,7 @@ const resetData= ()=>{
         <textarea
           rows="10"
           cols="50"
-          value={content}
+          value={content.length>0 ? content : answer}
           onChange={(e) => setContent(e.target.value)}
           style={{
             width: "80%",
@@ -278,6 +317,7 @@ const resetData= ()=>{
           }}
         />
       </div>
+      
     </div>
   );
 };

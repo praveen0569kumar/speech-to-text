@@ -1,16 +1,28 @@
 {
+  "homepage": "https://praveen0569kumar.github.io/speech-to-text",
   "name": "speech-to-text",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@reduxjs/toolkit": "^2.5.0",
+    "axios": "^1.7.9",
     "cra-template": "1.2.0",
+    "firebase": "^11.1.0",
+    "gh-pages": "^6.2.0",
+    "langchain": "^0.3.10",
+    "openai": "^4.77.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.1.1",
     "react-scripts": "5.0.1",
     "react-speech-recognition": "^3.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

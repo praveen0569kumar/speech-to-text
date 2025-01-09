@@ -4,6 +4,7 @@ import { db, ref, onValue, off } from "../firebase"; // Correct Firebase import
 const Readonly = () => {
   const [transcript, setTranscript] = useState("");
   const [content, setContent] = useState("");
+  const [answer,setAnswer]=useState('')
   // Listen for changes in Firebase
   useEffect(() => {
     const transcriptRef = ref(db, "transcript");
@@ -14,9 +15,11 @@ const Readonly = () => {
       if (data) {
         setTranscript(data.transcript);
         setContent(data.content)
+        setAnswer(data.answer)
       }
+      
     });
-    console.log(transcript)
+    
     return () => {
       off(transcriptRef); // Cleanup the listener on unmount
     };
@@ -145,6 +148,7 @@ const Readonly = () => {
 
             resize: "none",
           }}>{content}</p>
+          <p>{answer}</p>
         </div>
       </div>
     </div>
