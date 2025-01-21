@@ -24,7 +24,7 @@ const Readonly = () => {
       off(transcriptRef); // Cleanup the listener on unmount
     };
   }, []);
-
+console.log(answer.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>'),'12')
   return (
     <div className="container">
       <div className="candidate-details">
@@ -57,7 +57,8 @@ const Readonly = () => {
         <textarea rows="10" cols="50" value={transcript} readOnly />
         <div className="content-box">
           <p>{content}</p>
-          <p>{answer}</p>
+          
+          <p dangerouslySetInnerHTML={{ __html: answer.replace(/\*\*(.*?)\*\*/g, '<br>$1<br>') }} />
         </div>
       </div>
     </div>
